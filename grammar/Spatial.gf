@@ -3,7 +3,10 @@ abstract Spatial = open Predef in {
   cat
     Scene ; Object ; Relation ; Num ; ValidRel Relation Object Object ; ValidPos Relation Num Num Num Num ; IsEqual Num Num ; IsLess Num Num ;
   fun
-    n1, n2, n3, n4, n5, n6, n7, n8 : Num ;
+    z : Num ;
+    s : Num -> Num ;
+    n8 : Num ;
+    n3 : Num ;
     otree, ohouse, osun, operson, ogirl, otable, obox, oball : Object ;
     rbesides, rleftof, rrightof, rin, rabove, rontopof : Relation ;
     treebesideshouse : ValidRel rbesides otree ohouse ;
@@ -28,13 +31,8 @@ abstract Spatial = open Predef in {
     validleftofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsLess x1 x2 -> ValidPos rleftof x1 y1 x2 y2 ;
     validrightofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsLess x2 x1 -> ValidPos rleftof x1 y1 x2 y2 ;
     equal : (n : Num) -> IsEqual n n ;
-    less1 : IsLess n1 n2 ;
-    less2 : IsLess n2 n3 ;
-    less3 : IsLess n3 n4 ;
-    less4 : IsLess n4 n5 ;
-    less5 : IsLess n5 n6 ;
-    less6 : IsLess n6 n7 ;
-    less7 : IsLess n7 n8 ;
+    lessz : IsLess z (s z);
+    lesss : (n1, n2 : Num) -> IsLess n1 n2 -> IsLess (s n1) (s n2) ;
     lessn : (n1,n2,n3 : Num) -> IsLess n1 n2 -> IsLess n2 n3 -> IsLess n1 n3 ;
     place : (o1 : Object) -> (o2 : Object) -> (x1,y1,x2,y2 : Num) -> (r : Relation) -> ValidRel r o1 o2 -> ValidPos r x1 y1 x2 y2 -> Scene ;
 }
