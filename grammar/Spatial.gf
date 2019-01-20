@@ -38,7 +38,7 @@ abstract Spatial = open Predef in {
     personin : InsideObject operson ;
     girlin : InsideObject ogirl ;
     tablein : InsideObject otable ;
-    boxin : InsideObject obox ;
+--    boxin : InsideObject obox ;
     ballin : InsideObject oball ;
     houseout : ExternalObject ohouse ;
     boxout : ExternalObject obox ;
@@ -56,13 +56,15 @@ abstract Spatial = open Predef in {
     validontop : (o1,o2 : Object) -> OnTopOfObject o1 -> BaseObject o2 -> ValidRel rontopof o1 o2 ;
     -- Coerce relations
     leftofisbesides : (o1 : Object) -> (o2 : Object) -> ValidRel rbesides o1 o2 -> ValidRel rleftof o1 o2 ;
-    rightofisbesides : (o1 : Object) -> (o2 : Object) -> ValidRel rbesides o1 o2 -> ValidRel rrightof o1 o2 ;
-    ontopofisabove : (o1 : Object) -> (o2 : Object) -> ValidRel rontopof o1 o2 -> ValidRel rabove o2 o1 ;
+--    rightofisbesides : (o1 : Object) -> (o2 : Object) -> ValidRel rbesides o1 o2 -> ValidRel rrightof o1 o2 ;
+--    ontopofisabove : (o1 : Object) -> (o2 : Object) -> ValidRel rontopof o1 o2 -> ValidRel rabove o2 o1 ;
     -- Restrictions on positions
     inrange : (x1,y1,x2,y2 : Num) -> IsLess x1 n5 -> IsLess x2 n5 -> IsLess y1 n3 -> IsLess y2 n3 -> InRange x1 y1 x2 y2 ;
-    validinpos : (x1,y1,x2,y2 : Num) -> IsEqual x1 x2 -> IsEqual y1 y2 -> InRange x1 y1 x2 y2 -> ValidPos rin x1 y1 x2 y2 ;
-    validleftofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsLess x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rleftof x1 y1 x2 y2 ;
-    validrightofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsLess x2 x1 -> InRange x1 y1 x2 y2 -> ValidPos rleftof x1 y1 x2 y2 ;
+    validinpos : (x1,y1,x2,y2 : Num) -> IsEqual x1 x2 -> IsEqual y1 y2 -> IsEqual y1 z -> InRange x1 y1 x2 y2 -> ValidPos rin x1 y1 x2 y2 ;
+    validleftofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsEqual y1 z -> IsLess x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rleftof x1 y1 x2 y2 ;
+    validrightofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsEqual y1 z -> IsLess x2 x1 -> InRange x1 y1 x2 y2 -> ValidPos rleftof x1 y1 x2 y2 ;
+    validabovepos : (x1,y1,x2,y2 : Num) -> IsLess y2 y1 -> IsEqual y2 z -> IsEqual x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rabove x1 y1 x2 y2 ;
+    validontopof : (x1,y1,x2,y2 : Num) -> IsEqual (s y2) y1 -> IsEqual y2 z -> IsEqual x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rontopof x1 y1 x2 y2 ;
     -- Put everything together as a scene
     place : (o1 : Object) -> (o2 : Object) -> (x1,y1,x2,y2 : Num) -> (r : Relation) -> ValidRel r o1 o2 -> ValidPos r x1 y1 x2 y2 -> Scene ;
 

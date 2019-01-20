@@ -22,7 +22,7 @@ incomplete concrete SpatialI of Spatial = {
     personin = "" ;
     girlin = "" ;
     tablein = "" ;
-    boxin = "" ;
+--    boxin = "" ;
     ballin = "" ;
     houseout = "" ;
     boxout = "" ;
@@ -44,7 +44,9 @@ incomplete concrete SpatialI of Spatial = {
     ontopofisabove o1 o2 r = r ;
     -- Restrictions on positions
     inrange x1 y1 x2 y2 l1 l2 l3 l4 = x1 ++ y1 ++ x2 ++ y2 ++ l1 ++ l2 ++ l3 ++ l4 ;
-    validinpos x1 y1 x2 y2 e1 e2 r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ r ;
-    validleftofpos x1 y1 x2 y2 e l r = x1 ++ y1 ++ x2 ++ y2 ++ e ++ l ++ r ;
-    validrightofpos x1 y1 x2 y2 e l r = x1 ++ y1 ++ x2 ++ y2 ++ e ++ l ++ r ;
+    validinpos x1 y1 x2 y2 e1 e2 e3 r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ e3 ++ r ;
+    validleftofpos x1 y1 x2 y2 e1 e2 l r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ l ++ r ;
+    validrightofpos x1 y1 x2 y2 e1 e2 l r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ l ++ r ;
+    validabovepos x1 y1 x2 y2 l e1 e2 r = x1 ++ y1 ++ x2 ++ y2 ++ l ++ e1 ++ e2 ++ r ;
+    validontopof x1 y1 x2 y2 e1 e2 e3 r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ e3 ++ r ;
 } ;
