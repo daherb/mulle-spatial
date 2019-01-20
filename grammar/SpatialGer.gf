@@ -3,8 +3,19 @@ concrete SpatialGer of Spatial = open ParadigmsGer, SyntaxGer, Prelude in {
     Scene = S ;
     Object = NP ;
     Relation = Prep ;
-    ValidPos, ValidRel, Num, IsEqual, IsLess  = Str ;
+    StackeddObject, BaseObject, ExternalObject, InsideObject,
+      BesidesObject, OnTopOfObject, AboveObject, BelowObject  = Str ;
+    ValidPos, ValidRel, Num, InRange, IsEqual, IsLess  = Str ;
+    
   lin
+    -- Basic numbers
+    z, n1, n2, n3, n4, n5 = "" ;
+    s n = n ;
+    equal n = n ;
+    lessz = "" ;
+    lesss n1 n2 l = n1 ++ n2 ++ l ;
+    lesst n1 n2 n3 l1 l2 = n1 ++ n2 ++ n3 ++ l1 ++ l2 ;
+    -- Basic objects and relations
     otree = mkObject "Baum" masculine ;
     ohouse = mkObject "Haus" neuter ;
     ogirl = mkObject "Mädchen" neuter ;
@@ -19,31 +30,43 @@ concrete SpatialGer of Spatial = open ParadigmsGer, SyntaxGer, Prelude in {
     rbesides = mkPrep "neben" dative;
     rleftof = mkPrep "links von" dative ;
     rrightof = mkPrep "rechts von" dative ;
-    treebesideshouse,
-      personbesideshouse,
-      girlbesideshouse,
-      personinhouse,
-      girlinhouse, 
-      tableinhouse,
-      boxinhouse,
-      ballinhouse,
-      tableinbox,
-      ballinbox,
-      sunabovetree,
-      sunabovehouse,
-      sunaboveperson,
-      ballontopoftable,
-      boxontopoftable = "";
-    leftofisbesides _ _  v = v ;
-    rightofisbesides _ _  v = v ;
-    n1 = "1" ; n2 = "2" ; n3 = "3" ; n4 = "4" ;
-    n5 = "5" ; n6 = "6" ; n7 = "7" ; n8 = "8" ;
-    equal n = n ;
-    less1, less2, less3, less4, less5, less6, less7 = "" ;
-    lessn n1 n2 n3 l1 l2 = n1 ++ n2 ++ l1 ++ l2 ;
-    validinpos x1 y1 x2 y2 e1 e2 = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ;
-    validleftofpos x1 y1 x2 y2 e l = x1 ++ y1 ++ x2 ++ y2 ++ e ++ l ;
-    validrightofpos x1 y1 x2 y2 e l = x1 ++ y1 ++ x2 ++ y2 ++ e ++ l ;
+    -- Restrictions on objects
+    treebesides = "" ;
+    housebesides = "" ;
+    personbesides = "" ;
+    girlbesides = "" ;
+    tablebesides = "" ;
+    boxbesides = "" ;
+    ballbesides = "" ; 
+    personin = "" ;
+    girlin = "" ;
+    tablein = "" ;
+    boxin = "" ;
+    ballin = "" ;
+    houseout = "" ;
+    boxout = "" ;
+    sunabove = "" ;
+    treebelow = "" ;
+    housebelow = "" ;
+    personbelow = "" ;
+    girlbelow = "" ;
+    tablebase = "" ;
+    ballontop = "" ;
+    boxontop = "" ;
+    validbesides o1 o2 r1 r2 = r1 ++ r2 ;
+    validin o1 o2 r1 r2 = r1 ++ r2 ;
+    validabove o1 o2 r1 r2 = r1 ++ r2 ;
+    validontop o1 o2 r1 r2 = r1 ++ r2 ;
+    -- Coerce relations
+    leftofisbesides o1 o2 r = r ;
+    rightofisbesides o1 o2 r = r ;
+    ontopofisabove o1 o2 r = r ;
+    -- Restrictions on positions
+    inrange x1 y1 x2 y2 l1 l2 l3 l4 = x1 ++ y1 ++ x2 ++ y2 ++ l1 ++ l2 ++ l3 ++ l4 ;
+    validinpos x1 y1 x2 y2 e1 e2 r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ r ;
+    validleftofpos x1 y1 x2 y2 e l r = x1 ++ y1 ++ x2 ++ y2 ++ e ++ l ++ r ;
+    validrightofpos x1 y1 x2 y2 e l r = x1 ++ y1 ++ x2 ++ y2 ++ e ++ l ++ r ;
+    -- Put everything together as a scene
     place o1 o2 x1 y1 x2 y2 r vr vp = 
       mkS presentTense simultaneousAnt positivePol (mkCl o1 (mkAdv r o2)) ;
   oper
