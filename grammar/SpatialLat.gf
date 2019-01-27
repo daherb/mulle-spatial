@@ -1,7 +1,7 @@
 --# -path=/home/herb/src/own/gf-rgl/src/latin:/home/herb/src/own/gf-rgl/src/latin/api
-concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, SyntaxLat, Prelude in {
+concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, SyntaxLat, Prelude, ResLat in {
   lincat
-    Scene = S ;
+    Scene = Str ;
     Object = NP ;
     Relation = Prep ;
   lin
@@ -23,7 +23,7 @@ concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, SyntaxLat, Prelu
     rrightof = mkPrep "dexter" acc ;
     -- Put everything together as a scene
     place o1 o2 x1 y1 x2 y2 r vr vp = 
-      mkS presentTense simultaneousAnt positivePol (mkCl o1 (mkAdv r o2)) ;
+      combineSentence (mkS presentTense simultaneousAnt positivePol (mkCl o1 (mkAdv r o2))) ! SPreO ! PreO ! SOV ;
   oper
     mkObject = overload {
       mkObject : Str -> NP = \o ->
