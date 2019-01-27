@@ -1,6 +1,6 @@
 concrete SpatialHTML of Spatial = SpatialI-[z,s] ** {
   param
-    Rel = Besides | NextTo | In | Above | OnTopOf | LeftOf | RightOf ;
+    Rel = Beside | NextTo | In | Above | OnTopOf | LeftOf | RightOf ;
   lincat
     Scene = Str ;
     Object = Str ;
@@ -20,7 +20,7 @@ concrete SpatialHTML of Spatial = SpatialI-[z,s] ** {
     rontopof = OnTopOf ;
     rin = In ;
     rabove = Above ; 
-    rbesides = Besides ;
+    rbeside = Beside ;
     rleftof = LeftOf ;
     rrightof = RightOf ;
     rnextto = NextTo ;

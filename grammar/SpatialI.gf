@@ -1,7 +1,7 @@
 incomplete concrete SpatialI of Spatial = {
   lincat
     StackeddObject, BaseObject, ExternalObject, InsideObject,
-      BesidesObject, OnTopOfObject, AboveObject, BelowObject  = Str ;
+      BesideObject, OnTopOfObject, AboveObject, BelowObject  = Str ;
     ValidPos, ValidRel, Num, InRange, IsEqual, IsLess  = Str ;
   lin
     -- Basic numbers
@@ -12,13 +12,13 @@ incomplete concrete SpatialI of Spatial = {
     lesss n1 n2 l = n1 ++ n2 ++ l ;
     lesst n1 n2 n3 l1 l2 = n1 ++ n2 ++ n3 ++ l1 ++ l2 ;
         -- Restrictions on objects
-    treebesides = "" ;
-    housebesides = "" ;
-    personbesides = "" ;
-    girlbesides = "" ;
-    tablebesides = "" ;
-    boxbesides = "" ;
-    ballbesides = "" ; 
+    treebeside = "" ;
+    housebeside = "" ;
+    personbeside = "" ;
+    girlbeside = "" ;
+    tablebeside = "" ;
+    boxbeside = "" ;
+    ballbeside = "" ; 
 --    personin = "" ;
 --    girlin = "" ;
     tablein = "" ;
@@ -38,14 +38,14 @@ incomplete concrete SpatialI of Spatial = {
     girlinhouse = "" ;
     personinhouse = "" ;
     treeinbox = "" ;
-    validbesides o1 o2 r1 r2 = r1 ++ r2 ;
+    validbeside o1 o2 r1 r2 = r1 ++ r2 ;
     validin o1 o2 r1 r2 = r1 ++ r2 ;
     validabove o1 o2 r1 r2 = r1 ++ r2 ;
     validontop o1 o2 r1 r2 = r1 ++ r2 ;
     -- Coerce relations
-    nexttoisbesides o1 o2 r = r ;
-    leftofisbesides o1 o2 r = r ;
-    rightofisbesides o1 o2 r = r ;
+    nexttoisbeside o1 o2 r = r ;
+    leftofisbeside o1 o2 r = r ;
+    rightofisbeside o1 o2 r = r ;
     ontopofisabove o1 o2 r = r ;
     -- Restrictions on positions
     inrange x1 y1 x2 y2 l1 l2 l3 l4 = x1 ++ y1 ++ x2 ++ y2 ++ l1 ++ l2 ++ l3 ++ l4 ;
