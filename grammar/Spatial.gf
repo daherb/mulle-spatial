@@ -35,10 +35,10 @@ abstract Spatial = open Predef in {
     tablebesides : BesidesObject otable ;
     boxbesides : BesidesObject obox ;
     ballbesides : BesidesObject oball ;
-    personin : InsideObject operson ;
-    girlin : InsideObject ogirl ;
+    -- personin : InsideObject operson ;
+    -- girlin : InsideObject ogirl ;
     tablein : InsideObject otable ;
---    boxin : InsideObject obox ;
+    boxin : InsideObject obox ;
     ballin : InsideObject oball ;
     houseout : ExternalObject ohouse ;
     boxout : ExternalObject obox ;
@@ -50,6 +50,10 @@ abstract Spatial = open Predef in {
     tablebase : BelowObject otable ;
     ballontop : OnTopOfObject oball ;
     boxontop : OnTopOfObject obox ;
+    boxinhouse : ValidRel rin obox ohouse ;
+    girlinhouse : ValidRel rin ogirl ohouse ;
+    personinhouse : ValidRel rin operson ohouse ;
+    treeinbox : ValidRel rin otree obox ;
     validbesides : (o1,o2 : Object) -> BesidesObject o1 -> BesidesObject o2 -> ValidRel rbesides o1 o2 ;
     validin : (o1,o2 : Object) -> InsideObject o1 -> ExternalObject o2 -> ValidRel rin o1 o2 ;
     validabove : (o1,o2 : Object) -> AboveObject o1 -> BelowObject o2 -> ValidRel rabove o1 o2 ;
