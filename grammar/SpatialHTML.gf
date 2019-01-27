@@ -1,6 +1,6 @@
 concrete SpatialHTML of Spatial = SpatialI-[z,s] ** {
   param
-    Rel = Besides | In | Above | OnTopOf | LeftOf | RightOf ;
+    Rel = Besides | NextTo | In | Above | OnTopOf | LeftOf | RightOf ;
   lincat
     Scene = Str ;
     Object = Str ;
@@ -23,22 +23,23 @@ concrete SpatialHTML of Spatial = SpatialI-[z,s] ** {
     rbesides = Besides ;
     rleftof = LeftOf ;
     rrightof = RightOf ;
+    rnextto = NextTo ;
     -- Put everything together as a scene
     place o1 o2 x1 y1 x2 y2 r vr vp =
       let
 	width= case r of {
-	  In => "\"150\"";
-	  _ => "\"200\""
+	  In => "\"80\"";
+	  _ => "\"100\""
 	  } ;
 	xoffset= case r of {
-	  In => "25" ;
+	  In => "10" ;
 	  _ => "0"
 	  } ;
       in
       "<html>\n" ++
-      "<svg height=\"600\" width=\"1000\">" ++
-      "<image style=\"x : calc((" ++ x1 ++ ")*200 + " ++ xoffset ++ "); y: calc((2 - (" ++ y1 ++ "))*200);\" xlink:href="++ o1 ++ " height=\"200\" width=" ++ width ++ " />\n" ++
-      "<image style=\"x : calc((" ++ x2 ++ ")*200); y: calc((2 - (" ++ y2 ++ "))*200);\" xlink:href="++ o2 ++ " height=\"200\" width=\"200\"/>\n" ++
+      "<svg height=\"300\" width=\"500\">" ++
+      "<image style=\"x : calc((" ++ x1 ++ ")*100 + " ++ xoffset ++ "); y: calc((2 - (" ++ y1 ++ "))*100);\" xlink:href="++ o1 ++ " height=\"100\" width=" ++ width ++ " />\n" ++
+      "<image style=\"x : calc((" ++ x2 ++ ")*100); y: calc((2 - (" ++ y2 ++ "))*100);\" xlink:href="++ o2 ++ " height=\"100\" width=\"100\"/>\n" ++
       "</svg>\n" ++
       "</html>\n"
       ;
