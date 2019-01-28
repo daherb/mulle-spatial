@@ -1,5 +1,5 @@
 --# -path=/home/herb/src/own/gf-rgl/src/latin:/home/herb/src/own/gf-rgl/src/latin/api
-concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, SyntaxLat, Prelude, ResLat in {
+concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, (C=Constructors), SyntaxLat, Prelude, ResLat in {
   lincat
     Scene = Str ;
     Object = NP ;
@@ -14,13 +14,13 @@ concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, SyntaxLat, Prelu
     operson = mkObject (mkN "homo" "hominis" masculine ) ;
     osun = mkObject (mkN "sol" "solis" masculine ) ;
     otable = mkObject "mensa" ;
-    rontopof = mkPrep "supra" acc ;
-    rin = mkPrep "in" acc ;
-    rabove = mkPrep "supra" acc ; -- Latin does not seem to make a difference
-    rbeside = mkPrep "vicinus" acc ;
-    rnextto = mkPrep "vicinus" acc ;
-    rleftof = mkPrep "sinister" acc ;
-    rrightof = mkPrep "dexter" acc ;
+    rontopof = lin Prep (mkPrep "supra" acc) ;
+    rin = lin Prep (mkPrep "in" abl) ;
+    rabove = lin Prep (mkPrep "supra" acc) ; -- Latin does not seem to make a difference
+    rbeside = lin Prep (mkPrep "prope" acc) ;
+    rnextto = lin Prep (mkPrep "iuxta" acc) ;
+    rleftof = lin Prep (mkPrep "sinistra" abl) ;
+    rrightof = lin Prep (mkPrep "dextra" abl) ;
     -- Put everything together as a scene
     place o1 o2 x1 y1 x2 y2 r vr vp = 
       combineSentence (mkS presentTense simultaneousAnt positivePol (mkCl o1 (mkAdv r o2))) ! SPreO ! PreO ! SOV ;
