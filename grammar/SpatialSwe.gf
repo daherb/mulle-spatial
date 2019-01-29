@@ -9,7 +9,7 @@ concrete SpatialSwe of Spatial = SpatialI ** open ParadigmsSwe, (C=ConstructorsS
     ohouse = mkObject "hus" neutrum ;
     ogirl = mkObject "flicka" utrum ;
     obox = mkObject "låda" utrum ;
-    oball = mkObject "ball" utrum ;
+    oball = mkObject "boll" utrum ;
     operson = mkObject "person" utrum ;
     osun = mkObject "sol" utrum ;
     otable = mkObject "bord" neutrum ;
