@@ -1,100 +1,248 @@
 <html>
-<p>Spatial: place oball oball (s z) z z z rnextto (nexttoisbeside oball oball (validbeside oball oball ballbeside ballbeside)) (validnexttorightpos (s z) z z z (equal z) (equal z) (equal (s z)) (inrange (s z) z z z (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))) (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the ball is next to the ball</p>
-<p>SpatialGer: der Ball ist direkt neben dem Ball</p>
-<p>SpatialLat: pila iuxta pilam est</p>
-<p>SpatialSwe: bollen är alldeles intill bollen</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 + 1 )*100 + 0 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/ball.svg" height="100" width= "100" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/ball.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
-<p>Spatial: place osun otree (s z) (s z) (s z) z rabove (validabove osun otree sunabove treebelow) (validabovepos (s z) (s z) (s z) z lessz (equal z) (equal (s z)) (inrange (s z) (s z) (s z) z (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))) (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))) (lesss z (s z) lessz) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the sun is above the tree</p>
-<p>SpatialGer: die Sonne ist über dem Baum</p>
-<p>SpatialLat: sol supra arborem est</p>
-<p>SpatialSwe: solen är över trädet</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 + 1 )*100 + 0 ); y: calc((2 - ( 0 + 1 ))*100);" xlink:href= "graphics/sun.svg" height="100" width= "100" /> <image style="x : calc(( 0 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/tree.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
+<p>
+Spatial: constraintPlace obox ogirl (s (s z)) z z z rrightof (rightofisbeside obox ogirl (validbeside obox ogirl boxbeside girlbeside)) (validrightofpos (s (s z)) z z z (equal z) (equal z) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (inrange (s (s z)) z z z (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 + 1 + 1 )*100 + 0 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/box.svg" height="100" width= "100" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/girl.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the box is right of the girl
+<br>
+SpatialGer: die Kiste ist rechts von dem Mädchen
+<br>
+SpatialLat: capsula dextra puella est
+<br>
+SpatialSwe: lådan är till höger av flickan
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 box(X),
+ 	 girl(Y),
+ 	 rightOf(X,Y).
 
-<p>Spatial: place ogirl ohouse z z z z rin girlinhouse (validinpos z z z z (equal z) (equal z) (equal z) (inrange z z z z (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s (s z))) lessz (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz)))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the girl is in the house</p>
-<p>SpatialGer: das Mädchen ist in dem Haus</p>
-<p>SpatialLat: puella in domo est</p>
-<p>SpatialSwe: flickan är i huset</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/girl.svg" height="100" width= "80" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/house.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
 
-<p>Spatial: place ogirl ohouse z z z z rin girlinhouse (validinpos z z z z (equal z) (equal z) (equal z) (inrange z z z z (lesst z (s z) (s (s (s z))) lessz (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz)))) (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the girl is in the house</p>
-<p>SpatialGer: das Mädchen ist in dem Haus</p>
-<p>SpatialLat: puella in domo est</p>
-<p>SpatialSwe: flickan är i huset</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/girl.svg" height="100" width= "80" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/house.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
+</p>
+<p>
+Spatial: constraintPlace ogirl ohouse (s z) z (s z) z rin girlinhouse (validinpos (s z) z (s z) z (equal (s z)) (equal z) (equal z) (inrange (s z) z (s z) z (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 + 1 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/girl.svg" height="100" width= "80" /> <image style="x : calc(( 0 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/house.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the girl is in the house
+<br>
+SpatialGer: das Mädchen ist in dem Haus
+<br>
+SpatialLat: puella in domo est
+<br>
+SpatialSwe: flickan är i huset
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 girl(X),
+ 	 house(Y),
+ 	 in(X,Y).
 
-<p>Spatial: place ogirl ohouse z z z z rin girlinhouse (validinpos z z z z (equal z) (equal z) (equal z) (inrange z z z z (lesst z (s z) (s (s (s z))) lessz (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)))) (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the girl is in the house</p>
-<p>SpatialGer: das Mädchen ist in dem Haus</p>
-<p>SpatialLat: puella in domo est</p>
-<p>SpatialSwe: flickan är i huset</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/girl.svg" height="100" width= "80" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/house.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
+</p>
+<p>
+Spatial: constraintPlace ogirl ohouse (s (s z)) z (s (s z)) z rin girlinhouse (validinpos (s (s z)) z (s (s z)) z (equal (s (s z))) (equal z) (equal z) (inrange (s (s z)) z (s (s z)) z (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 + 1 + 1 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/girl.svg" height="100" width= "80" /> <image style="x : calc(( 0 + 1 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/house.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the girl is in the house
+<br>
+SpatialGer: das Mädchen ist in dem Haus
+<br>
+SpatialLat: puella in domo est
+<br>
+SpatialSwe: flickan är i huset
+<br>
+<br>
+SpatialProlog: scene :- 
+ 	 girl(X),
+ 	 house(Y),
+ 	 in(X,Y).
+</p>
+<p>
+Spatial: constraintPlace otree obox (s z) z (s z) z rin treeinbox (validinpos (s z) z (s z) z (equal (s z)) (equal z) (equal z) (inrange (s z) z (s z) z (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))) (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 + 1 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/tree.svg" height="100" width= "80" /> <image style="x : calc(( 0 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/box.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the tree is in the box
+<br>
+SpatialGer: der Baum ist in der Kiste
+<br>
+SpatialLat: arbor in capsula est
+<br>
+SpatialSwe: trädet är i lådan
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 tree(X),
+ 	 box(Y),
+ 	 in(X,Y).
 
-<p>Spatial: place otable obox (s (s z)) z (s (s z)) z rin (validin otable obox tablein boxout) (validinpos (s (s z)) z (s (s z)) z (equal (s (s z))) (equal z) (equal z) (inrange (s (s z)) z (s (s z)) z (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the table is in the box</p>
-<p>SpatialGer: der Tisch ist in der Kiste</p>
-<p>SpatialLat: mensa in capsula est</p>
-<p>SpatialSwe: bordet är i lådan</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 + 1 + 1 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/table.svg" height="100" width= "80" /> <image style="x : calc(( 0 + 1 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/box.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
+</p>
+<p>
+Spatial: constraintPlace osun operson z (s z) z z rabove (validabove osun operson sunabove personbelow) (validabovepos z (s z) z z lessz (equal z) (equal z) (inrange z (s z) z z (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s (s z))) lessz (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz)))) (lesss z (s z) lessz) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 )*100 + 0 ); y: calc((2 - ( 0 + 1 ))*100);" xlink:href= "../graphics/sun.svg" height="100" width= "100" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/person.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the sun is above the person
+<br>
+SpatialGer: die Sonne ist über der Person
+<br>
+SpatialLat: sol supra hominem est
+<br>
+SpatialSwe: solen är över personen
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 sun(X),
+ 	 person(Y),
+ 	 above(X,Y).
 
-<p>Spatial: place otable obox z z z z rin (validin otable obox tablein boxout) (validinpos z z z z (equal z) (equal z) (equal z) (inrange z z z z (lesst z (s z) (s (s (s z))) lessz (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz)))) (lesst z (s z) (s (s (s z))) lessz (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the table is in the box</p>
-<p>SpatialGer: der Tisch ist in der Kiste</p>
-<p>SpatialLat: mensa in capsula est</p>
-<p>SpatialSwe: bordet är i lådan</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/table.svg" height="100" width= "80" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/box.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
-<p>Spatial: place ogirl oball (s z) z z z rnextto (nexttoisbeside ogirl oball (validbeside ogirl oball girlbeside ballbeside)) (validnexttorightpos (s z) z z z (equal z) (equal z) (equal (s z)) (inrange (s z) z z z (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s (s z))) lessz (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz)))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the girl is next to the ball</p>
-<p>SpatialGer: das Mädchen ist direkt neben dem Ball</p>
-<p>SpatialLat: puella iuxta pilam est</p>
-<p>SpatialSwe: flickan är alldeles intill bollen</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 + 1 )*100 + 0 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/girl.svg" height="100" width= "100" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/ball.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
+</p>
+<p>
+Spatial: constraintPlace obox otable (s (s z)) z z z rrightof (rightofisbeside obox otable (validbeside obox otable boxbeside tablebeside)) (validrightofpos (s (s z)) z z z (equal z) (equal z) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (inrange (s (s z)) z z z (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesst z (s z) (s (s (s z))) lessz (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 + 1 + 1 )*100 + 0 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/box.svg" height="100" width= "100" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/table.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the box is right of the table
+<br>
+SpatialGer: die Kiste ist rechts von dem Tisch
+<br>
+SpatialLat: capsula dextra mensa est
+<br>
+SpatialSwe: lådan är till höger av bordet
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 box(X),
+ 	 table(Y),
+ 	 rightOf(X,Y).
+</p>
+<p>
+Spatial: constraintPlace obox oball (s z) z z z rnextto (nexttoisbeside obox oball (validbeside obox oball boxbeside ballbeside)) (validnexttorightpos (s z) z z z (equal z) (equal z) (equal (s z)) (inrange (s z) z z z (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 + 1 )*100 + 0 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/box.svg" height="100" width= "100" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/ball.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the box is next to the ball
+<br>
+SpatialGer: die Kiste ist direkt neben dem Ball
+<br>
+SpatialLat: capsula iuxta pilam est
+<br>
+SpatialSwe: lådan är alldeles intill bollen
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 box(X),
+ 	 ball(Y),
+ 	 nextTo(X,Y).
+</p>
+<p>
+Spatial: constraintPlace ogirl otable z z (s z) z rleftof (leftofisbeside ogirl otable (validbeside ogirl otable girlbeside tablebeside)) (validleftofpos z z (s z) z (equal z) (equal z) lessz (inrange z z (s z) z (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 )*100 + 0 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/girl.svg" height="100" width= "100" /> <image style="x : calc(( 0 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/table.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the girl is left of the table
+<br>
+SpatialGer: das Mädchen ist links von dem Tisch
+<br>
+SpatialLat: puella sinistra mensa est
+<br>
+SpatialSwe: flickan är till vänster av bordet
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 girl(X),
+ 	 table(Y),
+ 	 leftOf(X,Y).
+</p>
+<p>
+Spatial: constraintPlace obox ohouse (s (s z)) z (s (s z)) z rin boxinhouse (validinpos (s (s z)) z (s (s z)) z (equal (s (s z))) (equal z) (equal z) (inrange (s (s z)) z (s (s z)) z (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 + 1 + 1 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/box.svg" height="100" width= "80" /> <image style="x : calc(( 0 + 1 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/house.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the box is in the house
+<br>
+SpatialGer: die Kiste ist in dem Haus
+<br>
+SpatialLat: capsula in domo est
+<br>
+SpatialSwe: lådan är i huset
+<br> 
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 box(X),
+ 	 house(Y),
+ 	 in(X,Y).
 
-<p>Spatial: place operson ohouse (s z) z (s z) z rin personinhouse (validinpos (s z) z (s z) z (equal (s z)) (equal z) (equal z) (inrange (s z) z (s z) z (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))) (lesst (s z) (s (s z)) (s (s (s z))) (lesss z (s z) lessz) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the person is in the house</p>
-<p>SpatialGer: die Person ist in dem Haus</p>
-<p>SpatialLat: homo in domo est</p>
-<p>SpatialSwe: personen är i huset</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 + 1 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/person.svg" height="100" width= "80" /> <image style="x : calc(( 0 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/house.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
 
-<p>Spatial: place operson ohouse (s (s z)) z (s (s z)) z rin personinhouse (validinpos (s (s z)) z (s (s z)) z (equal (s (s z))) (equal z) (equal z) (inrange (s (s z)) z (s (s z)) z (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))</p>
-<p>SpatialEng: the person is in the house</p>
-<p>SpatialGer: die Person ist in dem Haus</p>
-<p>SpatialLat: homo in domo est</p>
-<p>SpatialSwe: personen är i huset</p>
-<p>SpatialHTML: </p>
-<p> <svg height="300" width="500"> <image style="x : calc(( 0 + 1 + 1 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/person.svg" height="100" width= "80" /> <image style="x : calc(( 0 + 1 + 1 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "graphics/house.svg" height="100" width="100"/> </svg></p>
-<p> </p>
-<p></p>
+</p>
+<p>
+Spatial: constraintPlace oball ohouse z z z z rin (validin oball ohouse ballin houseout) (validinpos z z z z (equal z) (equal z) (equal z) (inrange z z z z (lesst z (s z) (s (s (s z))) lessz (lesss z (s (s z)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)))) (lesst z (s (s z)) (s (s (s z))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesss (s z) (s (s z)) (lesss z (s z) lessz))) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz)) (lesst z (s z) (s (s z)) lessz (lesss z (s z) lessz))))
+<br>
+SpatialHTML:
+<br>
+ <svg height="300" width="500"> <image style="x : calc(( 0 )*100 + 10 ); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/ball.svg" height="100" width= "80" /> <image style="x : calc(( 0 )*100); y: calc((2 - ( 0 ))*100);" xlink:href= "../graphics/house.svg" height="100" width="100"/> </svg>
+<br>
+<br>
+SpatialEng: the ball is in the house
+<br>
+SpatialGer: der Ball ist in dem Haus
+<br>
+SpatialLat: pila in domo est
+<br>
+SpatialSwe: bollen är i huset
+<br>
+<br>
+SpatialProlog: 
+<br>
+scene :- 
+ 	 ball(X),
+ 	 house(Y),
+ 	 in(X,Y).
 
+</p>
 </html>
