@@ -1,7 +1,7 @@
 abstract Spatial = open Predef in {
   flags startcat = Scene ;
   cat
-    Scene ; Object ; Relation ;
+    Scene ; Object ; Relation ; FreeScene; EditScene ;
     StackeddObject Object ; BaseObject Object ; ExternalObject Object ;
     InsideObject Object ; BesideObject Object ; OnTopOfObject Object ;
     AboveObject Object ; BelowObject Object ;
@@ -73,7 +73,9 @@ abstract Spatial = open Predef in {
     validabovepos : (x1,y1,x2,y2 : Num) -> IsLess y2 y1 -> IsEqual y2 z -> IsEqual x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rabove x1 y1 x2 y2 ;
     validontopofpos : (x1,y1,x2,y2 : Num) -> IsEqual (s y2) y1 -> IsEqual y2 z -> IsEqual x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rontopof x1 y1 x2 y2 ;
     -- Put everything together as a scene
-    place : (o1 : Object) -> (o2 : Object) -> (x1,y1,x2,y2 : Num) -> (r : Relation) -> ValidRel r o1 o2 -> ValidPos r x1 y1 x2 y2 -> Scene ;
+    constraintPlace : (o1 : Object) -> (o2 : Object) -> (x1,y1,x2,y2 : Num) -> (r : Relation) -> ValidRel r o1 o2 -> ValidPos r x1 y1 x2 y2 -> Scene ;
+    freePlace : (o1 : Object) -> (o2 : Object) -> (r : Relation) -> ValidRel r o1 o2 -> FreeScene ;
+    freeEdit : (o1 : Object) -> (o2 : Object) -> (r : Relation) -> EditScene ;
   def
     n1 = s z ;
     n2 = s (s z) ;
