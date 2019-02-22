@@ -1,6 +1,6 @@
-concrete SpatialSwe of Spatial = SpatialI ** open ParadigmsSwe, (C=ConstructorsSwe), SyntaxSwe, Prelude in {
+concrete SpatialSwe of Spatial = SpatialI ** SpatialLangI with (Constructors=ConstructorsSwe)** open ParadigmsSwe, SyntaxSwe, Prelude in {
   lincat
-    Scene = S ;
+    Scene, FreeScene, EditScene = S ;
     Object = NP ;
     Relation = Prep ;
   lin
@@ -20,9 +20,6 @@ concrete SpatialSwe of Spatial = SpatialI ** open ParadigmsSwe, (C=ConstructorsS
     rnextto = mkPrep "alldeles intill" ;
     rleftof = mkPrep "till vänster av" ;
     rrightof = mkPrep "till höger av" ;
-    -- Put everything together as a scene
-    place o1 o2 x1 y1 x2 y2 r vr vp = 
-      mkS presentTense simultaneousAnt positivePol (mkCl o1 (C.mkAdv r o2)) ;
   oper
     mkObject : Str -> Gender -> NP = \o,g ->
       mkNP theSg_Det (mkN o g) ;

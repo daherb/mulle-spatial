@@ -1,7 +1,7 @@
 --# -path=/home/herb/src/own/gf-rgl/src/latin:/home/herb/src/own/gf-rgl/src/latin/api
-concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, (C=Constructors), SyntaxLat, Prelude, ResLat in {
+concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, SyntaxLat, Prelude, ResLat in {
   lincat
-    Scene = Str ;
+    Scene, FreeScene, EditScene = Str ;
     Object = NP ;
     Relation = Prep ;
   lin
@@ -22,8 +22,9 @@ concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, (C=Constructors)
     rleftof = lin Prep (mkPrep "sinistra" abl) ;
     rrightof = lin Prep (mkPrep "dextra" abl) ;
     -- Put everything together as a scene
-    place o1 o2 x1 y1 x2 y2 r vr vp = 
-      combineSentence (mkS presentTense simultaneousAnt positivePol (mkCl o1 (mkAdv r o2))) ! SPreO ! PreO ! SOV ;
+    constraintPlace o1 o2 x1 y1 x2 y2 r vr vp = mkScene (lin Object o1) (lin Object o2) (lin Relation r) ;
+    freePlace o1 o2 r vr = mkScene (lin Object o1) (lin Object o2) (lin Relation r) ;
+    freeEdit o1 o2 r = mkScene (lin Object o1) (lin Object o2) (lin Relation r) ;
   oper
     mkObject = overload {
       mkObject : Str -> NP = \o ->
@@ -31,4 +32,7 @@ concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, (C=Constructors)
       mkObject : N -> NP = \n ->
 	mkNP theSg_Det n ;
       };
+
+    mkScene : Object -> Object -> Relation -> Str =
+      \o1,o2,r -> combineSentence (mkS presentTense simultaneousAnt positivePol (mkCl (lin NP o1) (mkAdv (lin Adv r) (lin NP o2)))) ! SPreO ! PreO ! SOV ;
 } ;

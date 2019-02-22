@@ -1,6 +1,6 @@
-concrete SpatialGer of Spatial = SpatialI ** open ParadigmsGer, (C=ConstructorsGer), SyntaxGer, Prelude in {
+concrete SpatialGer of Spatial = SpatialI ** SpatialLangI with (Constructors=ConstructorsGer) ** open ParadigmsGer, SyntaxGer, Prelude in {
   lincat
-    Scene = S ;
+    Scene, FreeScene, EditScene = S ;
     Object = NP ;
     Relation = Prep ;
   lin
@@ -20,9 +20,6 @@ concrete SpatialGer of Spatial = SpatialI ** open ParadigmsGer, (C=ConstructorsG
     rnextto = mkPrep "direkt neben" dative ;
     rleftof = mkPrep "links von" dative ;
     rrightof = mkPrep "rechts von" dative ;
-    -- Put everything together as a scene
-    place o1 o2 x1 y1 x2 y2 r vr vp = 
-      mkS presentTense simultaneousAnt positivePol (mkCl o1 (C.mkAdv r o2)) ;
   oper
     mkObject : Str -> Gender -> NP = \o,g ->
       mkNP theSg_Det (mkN o g) ;

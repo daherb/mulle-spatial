@@ -25,7 +25,7 @@ concrete SpatialHTML of Spatial = SpatialI-[z,s] ** {
     rrightof = RightOf ;
     rnextto = NextTo ;
     -- Put everything together as a scene
-    place o1 o2 x1 y1 x2 y2 r vr vp =
+    constraintPlace o1 o2 x1 y1 x2 y2 r vr vp =
       let
 	width= case r of {
 	  In => "\"80\"";

@@ -56,4 +56,5 @@ incomplete concrete SpatialI of Spatial = {
     validrightofpos x1 y1 x2 y2 e1 e2 l r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ l ++ r ;
     validabovepos x1 y1 x2 y2 l e1 e2 r = x1 ++ y1 ++ x2 ++ y2 ++ l ++ e1 ++ e2 ++ r ;
     validontopofpos x1 y1 x2 y2 e1 e2 e3 r = x1 ++ y1 ++ x2 ++ y2 ++ e1 ++ e2 ++ e3 ++ r ;
+
 } ;

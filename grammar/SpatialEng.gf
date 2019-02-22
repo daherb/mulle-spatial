@@ -1,6 +1,6 @@
-concrete SpatialEng of Spatial = SpatialI ** open ParadigmsEng, (C=ConstructorsEng), SyntaxEng, Prelude in {
+concrete SpatialEng of Spatial = SpatialI ** SpatialLangI with (Constructors=ConstructorsEng) ** open ParadigmsEng, SyntaxEng, Prelude in {
   lincat
-    Scene = S ;
+    Scene, FreeScene, EditScene = S ;
     Object = NP ;
     Relation = Prep ;
   lin
@@ -20,9 +20,6 @@ concrete SpatialEng of Spatial = SpatialI ** open ParadigmsEng, (C=ConstructorsE
     rnextto = mkPrep "next to" ;
     rleftof = mkPrep "left of" ;
     rrightof = mkPrep "right of" ;
-    -- Put everything together as a scene
-    place o1 o2 x1 y1 x2 y2 r vr vp = 
-      mkS presentTense simultaneousAnt positivePol (mkCl o1 (C.mkAdv r o2)) ;
   oper
     mkObject : Str -> NP = \o ->
       mkNP theSg_Det (mkN o) ;
