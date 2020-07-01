@@ -38,8 +38,8 @@ concrete SpatialHTML of Spatial = SpatialI-[z,s] ** {
       in
       "<html>\n" ++
       "<svg height=\"300\" width=\"500\">" ++
-      "<image style=\"x : calc((" ++ x1 ++ ")*100 + " ++ xoffset ++ "); y: calc((2 - (" ++ y1 ++ "))*100);\" xlink:href="++ o1 ++ " height=\"100\" width=" ++ width ++ " />\n" ++
-      "<image style=\"x : calc((" ++ x2 ++ ")*100); y: calc((2 - (" ++ y2 ++ "))*100);\" xlink:href="++ o2 ++ " height=\"100\" width=\"100\"/>\n" ++
+      "<image style=\"x : calc((" ++ x1 ++ ")*100px + " ++ xoffset ++ px"); y: calc((2 - (" ++ y1 ++ "))*100px);\" xlink:href="++ o1 ++ " height=\"100\" width=" ++ width ++ " />\n" ++
+      "<image style=\"x : calc((" ++ x2 ++ ")*100px); y: calc((2 - (" ++ y2 ++ "))*100px);\" xlink:href="++ o2 ++ " height=\"100\" width=\"100\"/>\n" ++
       "</svg>\n" ++
       "</html>\n"
       ;
