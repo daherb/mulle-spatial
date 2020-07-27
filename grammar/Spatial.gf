@@ -48,7 +48,7 @@ abstract Spatial = open Predef in {
     housebelow : BelowObject ohouse ;
     personbelow : BelowObject operson ;
     girlbelow : BelowObject ogirl ;
-    tablebase : BelowObject otable ;
+    tablebase : BaseObject otable ;
     ballontop : OnTopOfObject oball ;
     boxontop : OnTopOfObject obox ;
     boxinhouse : ValidRel rin obox ohouse ;
