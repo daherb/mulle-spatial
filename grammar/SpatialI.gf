@@ -5,10 +5,15 @@ incomplete concrete SpatialI of Spatial = {
     ValidPos, ValidRel, Num, InRange, IsEqual, IsLess  = Str ;
   lin
     -- Basic numbers
-    z, n1, n2, n3, n4, n5 = "" ;
-    s n = n ;
+    z = "0" ;
+    n1 = "1" ;
+    n2 = "2" ;
+    n3 = "3" ;
+    n4 = "4" ;
+    n5 = "5" ;
+    s n = "1+" ++ n ;
     equal n = n ;
-    lessz = "" ;
+    lessz n = n ;
     lesss n1 n2 l = n1 ++ n2 ++ l ;
     lesst n1 n2 n3 l1 l2 = n1 ++ n2 ++ n3 ++ l1 ++ l2 ;
         -- Restrictions on objects
