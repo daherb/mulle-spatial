@@ -66,8 +66,7 @@ maxx : Num
 maxx = n5
 
 maxy : Num
-maxy = n3
-
+maxy = n4
 ```
 
 After defining our numbers we can move on to the description of our pictures. We already

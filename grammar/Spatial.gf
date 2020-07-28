@@ -86,6 +86,6 @@ abstract Spatial = open Predef in {
     -- n8 = s (s (s (s (s (s (s (s z))))))) ;
     -- n9 = s (s (s (s (s (s (s (s (s z)))))))) ;
     maxx = n5 ;
-    maxy = n3 ;
+    maxy = n4 ;
       
 }
