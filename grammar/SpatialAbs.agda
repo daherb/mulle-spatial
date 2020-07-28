@@ -3,7 +3,28 @@ module SpatialAbs where
 data Num : Set where
   z : Num
   s : Num → Num
-  
+
+n1 : Num
+n1 = s z
+
+n2 : Num
+n2 =  s n1
+
+n3 : Num
+n3 = s n2
+
+n4 : Num
+n4 = s n3
+
+n5 : Num
+n5 = s n4
+
+maxx : Num
+maxx = n5
+
+maxy : Num
+maxy = n3
+
 data Object : Set where
   otree : Object
   ohouse : Object
@@ -72,24 +93,10 @@ data IsLess : Num → Num → Set where
   lesss : (n1 n2 : Num) → IsLess n1 n2 → IsLess (s n1) (s n2)
   lesst : (n1 n2 n3 : Num ) → IsLess n1 n2 → IsLess n2 n3 → IsLess n1 n3
 
-n1 : Num
-n1 = s z
-
-n2 : Num
-n2 = s n1
-
-n3 : Num
-n3 = s n2
-
-n4 : Num
-n4 = s n3
-
-n5 : Num
-n5 = s n4
 
 data InRange : Num -> Num -> Num -> Num -> Set where
   -- Restrictions on positions
-  inrange : (x1 y1 x2 y2 : Num) -> IsLess x1 n5 -> IsLess x2 n5 -> IsLess y1 n3 -> IsLess y2 n3 -> InRange x1 y1 x2 y2
+  inrange : (x1 y1 x2 y2 : Num) -> IsLess x1 maxx -> IsLess x2 maxx -> IsLess y1 maxy -> IsLess y2 maxy -> InRange x1 y1 x2 y2
 
 data ValidPos : Relation -> Num -> Num -> Num -> Num -> Set where
   validinpos : (x1 y1 x2 y2 : Num) -> IsEqual x1 x2 -> IsEqual y1 y2 -> IsEqual y1 z -> InRange x1 y1 x2 y2 -> ValidPos rin x1 y1 x2 y2

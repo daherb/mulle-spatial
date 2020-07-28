@@ -17,6 +17,8 @@ abstract Spatial = open Predef in {
     n3 : Num ;
     n4 : Num ;
     n5 : Num ;
+    maxx : Num ;
+    maxy : Num ;
     -- n6 : Num ;
     -- n7 : Num ;
     -- n8 : Num ;
@@ -61,7 +63,7 @@ abstract Spatial = open Predef in {
     rightofisbeside : (o1,o2 : Object) -> ValidRel rbeside o1 o2 -> ValidRel rrightof o1 o2 ;
     ontopofisabove : (o1,o2 : Object) -> ValidRel rontopof o1 o2 -> ValidRel rabove o2 o1 ;
     -- Restrictions on positions
-    inrange : (x1,y1,x2,y2 : Num) -> IsLess x1 n3 -> IsLess x2 n3 -> IsLess y1 n2 -> IsLess y2 n2 -> InRange x1 y1 x2 y2 ;
+    inrange : (x1,y1,x2,y2 : Num) -> IsLess x1 maxx -> IsLess x2 maxx -> IsLess y1 maxy -> IsLess y2 maxy -> InRange x1 y1 x2 y2 ;
     validinpos : (x1,y1,x2,y2 : Num) -> IsEqual x1 x2 -> IsEqual y1 y2 -> IsEqual y1 z -> InRange x1 y1 x2 y2 -> ValidPos rin x1 y1 x2 y2 ;
     validleftofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsEqual y1 z -> IsLess x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rleftof x1 y1 x2 y2 ;
     validrightofpos : (x1,y1,x2,y2 : Num) -> IsEqual y1 y2 -> IsEqual y1 z -> IsLess x2 x1 -> InRange x1 y1 x2 y2 -> ValidPos rrightof x1 y1 x2 y2 ;
@@ -83,4 +85,7 @@ abstract Spatial = open Predef in {
     -- n7 = s (s (s (s (s (s (s z)))))) ;
     -- n8 = s (s (s (s (s (s (s (s z))))))) ;
     -- n9 = s (s (s (s (s (s (s (s (s z)))))))) ;
+    maxx = n5 ;
+    maxy = n3 ;
+      
 }
