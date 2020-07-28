@@ -26,18 +26,16 @@ abstract Spatial = open Predef in {
     lesss : (n1, n2 : Num) -> IsLess n1 n2 -> IsLess (s n1) (s n2) ;
     lesst : (n1,n2,n3 : Num) -> IsLess n1 n2 -> IsLess n2 n3 -> IsLess n1 n3 ;
     -- Basic objects and relations
-    otree, ohouse, osun, operson, otable, obox, oball : Object ; -- ogirl
+    otree, ohouse, osun, operson, otable, obox, oball : Object ;
     rbeside, rleftof, rrightof, rin, rabove, rontopof, rnextto : Relation ;
     -- Restrictions on objects
     treebeside : BesideObject otree ;
     housebeside : BesideObject ohouse ;
     personbeside : BesideObject operson ;
---    girlbeside : BesideObject ogirl ;
     tablebeside : BesideObject otable ;
     boxbeside : BesideObject obox ;
     ballbeside : BesideObject oball ;
     -- personin : InsideObject operson ;
-    -- girlin : InsideObject ogirl ;
     tablein : InsideObject otable ;
     boxin : InsideObject obox ;
     ballin : InsideObject oball ;
@@ -47,12 +45,10 @@ abstract Spatial = open Predef in {
     treebelow : BelowObject otree ;
     housebelow : BelowObject ohouse ;
     personbelow : BelowObject operson ;
-    girlbelow : BelowObject ogirl ;
     tablebase : BaseObject otable ;
     ballontop : OnTopOfObject oball ;
     boxontop : OnTopOfObject obox ;
     boxinhouse : ValidRel rin obox ohouse ;
-    girlinhouse : ValidRel rin ogirl ohouse ;
     personinhouse : ValidRel rin operson ohouse ;
     treeinbox : ValidRel rin otree obox ;
     validbeside : (o1,o2 : Object) -> BesideObject o1 -> BesideObject o2 -> ValidRel rbeside o1 o2 ;
