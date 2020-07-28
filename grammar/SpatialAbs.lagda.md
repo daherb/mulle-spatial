@@ -1,9 +1,52 @@
+# Dependent types and spatial relations in pictures
+
+## Introduction
+
+Dependent types are great to model constraints. A simple example is
+the definition of vectors, i.e. lists with associated length.
+
+But dependent types can also be very useful when modelling concepts
+closely related to natural language. This document explains how dependent
+types, both in GF and Agda can be used to express spatial relationship
+between objects in a picture and how the same type-theoretic representation
+can be translated into both graphical pictures and natural language
+descriptions.
+
+## Getting started
+
+We start our project by defining an "abstract" module. It defines the data types
+which we need to describe our pictures. Later we can add modules to translate
+these data types into other representations. We call this module "SpatialAbs"
+```
 module SpatialAbs where
 
+```
+Before we can dive into more complex topics, we have to define a concept
+of numbers. An easy way to define natural numbers is using the Peano axioms.
+
+```
 data Num : Set where
   z : Num
   s : Num → Num
+```
+This definition basically says, that zero ("z") is a natural number ("Num") and
+for each number, the succesor ("s") is also a number. We need this type later
+to place objects and check if a position is valid for a certain spatial relationship.
 
+To avoid some tedious typing, we can define a few number constants for the numbers from
+1 to 5.
+
+To place object we use a grid with x and y directions, ranging from 0 to a maximum for
+each direction. For each of these maxima we also define a name.
+
+---------------------
+|0,2|1,2|2,2|3,2|4,2|
+|---+---+---+---+---|
+|0,1|1,1|2,1|3,1|4,1|
+|---+---+---+---+---|
+|0,0|1,0|2,0|3,0|4,0|
+---------------------
+```
 n1 : Num
 n1 = s z
 
@@ -25,6 +68,14 @@ maxx = n5
 maxy : Num
 maxy = n3
 
+```
+
+After defining our numbers we can move on to the description of our pictures. We already
+mentioned a grid on which objects can be placed. The next step is to define these basic
+objects. The type of objects is simply defined by listing all possible values.
+All types we have defined so far are simple types. But they will be later used in the definition
+of the dependent types describing, e.g. what objects can appear in which position.
+```
 data Object : Set where
   otree : Object
   ohouse : Object
@@ -33,7 +84,11 @@ data Object : Set where
   otable : Object
   obox : Object
   oball : Object
-
+```
+Another simple type is the list of all valid relations between objects. This type is again
+defined listing all values. We later have to define what exactly it means to be beside, in
+or above of another object.
+```
 data Relation : Set where
   rbeside : Relation
   rleftof : Relation
@@ -42,7 +97,48 @@ data Relation : Set where
   rabove : Relation
   rontopof : Relation
   rnextto : Relation
-data StackedObject : Object → Set where
+```
+But before moving on, we need to add a bit to our numbers. To be able to use our numbers in
+a meaningful way, we need to know when two numbers are equal or when one number is smaller
+than another. We can define these two relations using dependent types for the first time.
+
+We define two new data types, modeling if two numbers are equal or if a number is smaller than
+another one.
+
+Equality is defined by reflexivity, i.e. a number is equal to itself, and by symmetry, i.e.
+if a n1=n2 then also n2=n1.
+```
+data IsEqual : Num → Num → Set where
+  equal : (n : Num) → IsEqual n n
+  sequal : (n n' : Num) → IsEqual n n' → IsEqual n' n
+```
+
+The less-than relation is defined the following way:
+- zero is less than the successor of every other number
+- If n1<n2 then also the succesor of n1 is smaller than the succesor of n2
+- by transitivity, if n1<n2 and n2<n2 we also know that n1<n3
+
+```
+data IsLess : Num → Num → Set where
+  lessz : (n : Num) → IsLess z (s n)
+  lesss : (n1 n2 : Num) → IsLess n1 n2 → IsLess (s n1) (s n2)
+  lesst : (n1 n2 n3 : Num ) → IsLess n1 n2 → IsLess n2 n3 → IsLess n1 n3
+
+```
+These two relations come in handy later, when actually placing objects.
+But remember that these are types, dependent types to be precise, not
+predicates. But if we can construct an object of these types, it is a
+proof that the desired relation holds between the parameters.
+
+But before placing objects, we can clasify them. Not every object can
+take every position. For example it is quite difficult to place something
+on top of a ball. Of course we could define for each object separately,
+where it can be used. But it is easier to define classes of objects
+that can be used in the rules about how objects can be placed.
+Some of these classes are only defined for one type of object, so we
+could use this object directly. But having these classes, we can add
+objects later more easily.
+```
 data BaseObject : Object → Set where
   tablebase : BaseObject otable
 data OutsideObject : Object → Set where
@@ -69,11 +165,24 @@ data BelowObject : Object → Set where
   treebelow : BelowObject otree
   housebelow : BelowObject ohouse
   personbelow : BelowObject operson
+```
 
+Now that we have defined the objects, spatial relations and classes of objects, we can
+define a new dependent type describing what relation is valid between which two objects.
+
+The first four just rely on the classes we defined. For example, if both objects are in
+the class `BesideObject` they can be combined in the `Beside` relation.
+
+But then some of the relations are related. If something is next to something else, it is
+also beside it. And if something is on top of something else, it is also above. So, if we
+can find a way to proof, that something is on top of something else, it is also above it.
+This kind of type constructor is called a type coercion.
+
+Finally, we handle a few special cases, where we don't want to use the general classes but
+only handle a few objects separately. It is not nice to put a person into a box, so we did
+not define `Person` as an `InsideObject`, but people can be in houses.
+```
 data ValidRel : Relation → Object → Object → Set where
-  boxinhouse : ValidRel rin obox ohouse
-  personinhouse : ValidRel rin operson ohouse
-  treeinbox : ValidRel rin otree obox
   validbeside : (o1 o2 : Object) → BesideObject o1 → BesideObject o2 → ValidRel rbeside o1 o2
   validin : (o1 o2 : Object) → InsideObject o1 → OutsideObject o2 → ValidRel rin o1 o2
   validabove : (o1 o2 : Object) → AboveObject o1 → BelowObject o2 → ValidRel rabove o1 o2
@@ -83,21 +192,23 @@ data ValidRel : Relation → Object → Object → Set where
   leftofisbeside : (o1 o2 : Object) -> ValidRel rbeside o1 o2 -> ValidRel rleftof o1 o2
   rightofisbeside : (o1 o2 : Object) -> ValidRel rbeside o1 o2 -> ValidRel rrightof o1 o2
   ontopofisabove : (o1 o2 : Object) -> ValidRel rontopof o1 o2 -> ValidRel rabove o2 o1
-    
-data IsEqual : Num → Num → Set where
-  equal : (n : Num) → IsEqual n n
-  requal : (n n' : Num) → IsEqual n n' → IsEqual n' n
+  -- Special cases
+  boxinhouse : ValidRel rin obox ohouse
+  personinhouse : ValidRel rin operson ohouse
+  treeinbox : ValidRel rin otree obox
+```
+Now we know which objects can be combined with which relation, but we still need to paint
+them on our canvas, or at least place them on our grid. We have two objects and each of them
+has x and y coordinates. The next type makes sure that the two positions are actually on the
+grid, using the variables `maxx` and `maxy` we defined above.
 
-data IsLess : Num → Num → Set where
-  lessz : (n : Num) → IsLess z (s n)
-  lesss : (n1 n2 : Num) → IsLess n1 n2 → IsLess (s n1) (s n2)
-  lesst : (n1 n2 n3 : Num ) → IsLess n1 n2 → IsLess n2 n3 → IsLess n1 n3
-
-
+```
 data InRange : Num -> Num -> Num -> Num -> Set where
   -- Restrictions on positions
   inrange : (x1 y1 x2 y2 : Num) -> IsLess x1 maxx -> IsLess x2 maxx -> IsLess y1 maxy -> IsLess y2 maxy -> InRange x1 y1 x2 y2
+```
 
+```
 data ValidPos : Relation -> Num -> Num -> Num -> Num -> Set where
   validinpos : (x1 y1 x2 y2 : Num) -> IsEqual x1 x2 -> IsEqual y1 y2 -> IsEqual y1 z -> InRange x1 y1 x2 y2 -> ValidPos rin x1 y1 x2 y2
   validleftofpos : (x1 y1 x2 y2 : Num) -> IsEqual y1 y2 -> IsEqual y1 z -> IsLess x1 x2 -> InRange x1 y1 x2 y2 -> ValidPos rleftof x1 y1 x2 y2
@@ -113,7 +224,7 @@ data FreeScene : Set where
    freePlace : (o1 o2 : Object) -> (r : Relation) -> ValidRel r o1 o2 -> FreeScene
 
 test : Scene
-test = constraintPlace obox ohouse z z z z rin boxinhouse (validinpos z z z z (requal z z (equal z)) (requal z z (equal z)) (equal z) (inrange z z z z (lessz (s (s (s (s z))))) (lessz (s (s (s (s z))))) (lessz (s (s z))) (lessz (s (s z)))))
+test = constraintPlace obox ohouse z z z z rin boxinhouse (validinpos z z z z (sequal z z (equal z)) (sequal z z (equal z)) (equal z) (inrange z z z z (lessz (s (s (s (s z))))) (lessz (s (s (s (s z))))) (lessz (s (s (s z)))) (lessz (s (s (s z))))))
 
 -- test : Scene
 -- test = constraintPlace oball operson z (s z) z z rabove  (validabove ballabove personbelow) (validabovepos lessz equal equal
