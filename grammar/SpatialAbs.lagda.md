@@ -1,36 +1,79 @@
 # Dependent types and spatial relations in pictures
 
+We start our project by defining an "abstract" module. It defines the data types
+which we need to describe our pictures. Later we can add modules to translate
+these data types into other representations. We call this module "SpatialAbs"
+
+```
+module SpatialAbs where
+
+```
 ## Introduction
 
-Dependent types are great to model constraints. A simple example is
-the definition of vectors, i.e. lists with associated length.
+Dependent types are great to model constraints. To put it very shortly,
+a dependent type is a type that depends on values of another type.
+A simple example is the definition of vectors, i.e. lists with associated
+length. The type of a vector depends on its length. This solves issues
+one can have with lists such as trying to get the head of an empty list
+because the `head` function is only defined for vectors of length larger
+than 0 and this constraint can be expressed on the type level.
+
+In Agda a vector can be defined this way:
+
+```
+open import Agda.Builtin.Nat
+
+data Vector (A : Set) : Nat → Set where
+  []  : Vector A zero
+  _∷_ : {n : Nat} → A → Vector A n → Vector A (suc n)
+```
+We use the built-in definition of natural numbers, which is essentially the same as the numbers
+we will use later, based on the Peano axioms.
+
+Because we want
+to have vectors working for any type, we use a type variable `(A : Set)`
+in the definition (`Set` is the type of types in Agda). And the part `Nat → Set`
+defines a vector as a dependent type, depending on a number of type `Nat`, the
+length of the vector.
+
+The vector is similar to a list with `[]` being the empty vector and using `::` to
+concatenate a value to the vector. Both are type constructors for vectors.
+The constructor for the empty vector sets the length in the type (!) to 0.
+The constructor `::` takes several arguments: An implicit number `n` (in curly brackets),
+a value of type `A` and a vector of length `n` containing elements of type `A`. As
+a result it again produces a vector containing `A`s but with the type containing
+the length plus 1.
+
+Now we can define a safe version of `head` only working on vectors of length greater than
+0 (expressed as `suc n`, which is always at least 1 greater than zero):
+
+```
+head : {n : Nat} → {A : Set } → Vector A (suc n) → A
+head (x ∷ v) = x
+```
+And already the types guarantee that we cannot try to get the `head` of an empty list.
 
 But dependent types can also be very useful when modelling concepts
-closely related to natural language. This document explains how dependent
-types, both in GF and Agda can be used to express spatial relationship
+closely related to natural language, especially concepts of semantics.
+This document explains how dependent
+types, both in Grammatical Framework (GF) and Agda can be used to express spatial relationship
 between objects in a picture and how the same type-theoretic representation
 can be translated into both graphical pictures and natural language
 descriptions.
 
 ## Getting started
 
-We start our project by defining an "abstract" module. It defines the data types
-which we need to describe our pictures. Later we can add modules to translate
-these data types into other representations. We call this module "SpatialAbs"
-```
-module SpatialAbs where
-
-```
 Before we can dive into more complex topics, we have to define a concept
 of numbers. An easy way to define natural numbers is using the Peano axioms.
-
+We could use the built-in numbers as we did with the vectors before, but it
+cannot hurt to repeat the definition here:
 ```
 data Num : Set where
   z : Num
   s : Num → Num
 ```
-This definition basically says, that zero ("z") is a natural number ("Num") and
-for each number, the succesor ("s") is also a number. We need this type later
+This definition basically says, that zero (`z`) is a natural number (`Num`) and
+for each number, the succesor (`s`) is also a number. We need this type later
 to place objects and check if a position is valid for a certain spatial relationship.
 
 To avoid some tedious typing, we can define a few number constants for the numbers from
@@ -39,13 +82,12 @@ To avoid some tedious typing, we can define a few number constants for the numbe
 To place object we use a grid with x and y directions, ranging from 0 to a maximum for
 each direction. For each of these maxima we also define a name.
 
----------------------
-|0,2|1,2|2,2|3,2|4,2|
-|---+---+---+---+---|
-|0,1|1,1|2,1|3,1|4,1|
-|---+---+---+---+---|
-|0,0|1,0|2,0|3,0|4,0|
----------------------
+The grid has the following shape:
+
+---|---|---|---|---
+0,2|1,2|2,2|3,2|4,2
+0,1|1,1|2,1|3,1|4,1
+0,0|1,0|2,0|3,0|4,0
 ```
 n1 : Num
 n1 = s z
