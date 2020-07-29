@@ -7,7 +7,6 @@ concrete SpatialSwe of Spatial = SpatialI ** SpatialLangI with (Constructors=Con
     -- Basic objects and relations
     otree = mkObject "träd" neutrum ;
     ohouse = mkObject "hus" neutrum ;
-    ogirl = mkObject "flicka" utrum ;
     obox = mkObject "låda" utrum ;
     oball = mkObject "boll" utrum ;
     operson = mkObject "person" utrum ;

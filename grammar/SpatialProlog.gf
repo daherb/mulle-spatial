@@ -3,7 +3,6 @@ concrete SpatialProlog of Spatial = SpatialI ** open Prelude in {
   lin
     oball = "ball" ;
     obox = "box";
-    ogirl = "girl" ;
     ohouse = "house" ;
     operson = "person" ;
     osun = "sun" ;

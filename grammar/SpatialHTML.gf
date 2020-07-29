@@ -11,7 +11,6 @@ concrete SpatialHTML of Spatial = SpatialI-[z,s] ** {
     -- Basic objects and relations
     otree = "\"../graphics/tree.svg\"" ;
     ohouse = "\"../graphics/house.svg\"" ;
-    ogirl = "\"../graphics/girl.svg\"" ;
     obox = "\"../graphics/box.svg\"" ;
     oball = "\"../graphics/ball.svg\"" ;
     operson = "\"../graphics/person.svg\"" ;

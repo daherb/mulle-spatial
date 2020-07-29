@@ -7,7 +7,6 @@ concrete SpatialEng of Spatial = SpatialI ** SpatialLangI with (Constructors=Con
     -- Basic objects and relations
     otree = mkObject "tree" ;
     ohouse = mkObject "house" ;
-    ogirl = mkObject "girl" ;
     obox = mkObject "box" ;
     oball = mkObject "ball" ;
     operson = mkObject "person" ;

@@ -8,7 +8,6 @@ concrete SpatialLat of Spatial = SpatialI ** open ParadigmsLat, SyntaxLat, Prelu
     -- Basic objects and relations
     otree = mkObject (mkN "arbor" "arboris" feminine ) ;
     ohouse = mkObject "domus" ;
-    ogirl = mkObject "puella" ;
     obox = mkObject "capsula" ;
     oball = mkObject "pila" ;
     operson = mkObject (mkN "homo" "hominis" masculine ) ;

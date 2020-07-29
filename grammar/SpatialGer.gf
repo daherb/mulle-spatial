@@ -7,7 +7,6 @@ concrete SpatialGer of Spatial = SpatialI ** SpatialLangI with (Constructors=Con
     -- Basic objects and relations
     otree = mkObject "Baum" masculine ;
     ohouse = mkObject "Haus" neuter ;
-    ogirl = mkObject "Mädchen" neuter ;
     obox = mkObject "Kiste" feminine ;
     oball = mkObject "Ball" masculine ;
     operson = mkObject "Person" feminine ;
