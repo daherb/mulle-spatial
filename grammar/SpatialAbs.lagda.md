@@ -325,6 +325,6 @@ example = constraintPlace obox ohouse z z z z rin boxinhouse (validinpos z z z z
 ```
 
 The same dependent types are defined in GF as an abstract syntac in the file `Spatial.gf` and can be translated into either pictures using
-the concrete syntax in `SpatialHTML.gf` or natural language description in English in `SpatialEng.gf`.
+the concrete syntax in [SpatialHTML.gf](SpatialHTML.gf) or natural language description in English in [SpatialEng.gf](SpatialEng.gf).
 
-As an additional experiment, we can also use Agda to translate the data types we defined here into English. It is described in the file `SpatialEng.ladga.md`.
+As an additional experiment, we can also use Agda to translate the data types we defined here into English. It is described in the file [SpatialEng.lagda.md](SpatialEng.lagda.md).
