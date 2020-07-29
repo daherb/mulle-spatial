@@ -1,6 +1,9 @@
 # Dependent types and spatial relations in pictures
 
-We start our project by defining an "abstract" module. It defines the data types
+This is a literate Agda file. That means you can either read it online or directly load and
+evaluate it in Emacs using the agda-mode.
+
+We start our small demo project by defining an "abstract" module. It defines the data types
 which we need to describe our pictures. Later we can add modules to translate
 these data types into other representations. We call this module "SpatialAbs"
 
@@ -325,6 +328,6 @@ example = constraintPlace obox ohouse z z z z rin boxinhouse (validinpos z z z z
 ```
 
 The same dependent types are defined in GF as an abstract syntac in the file `Spatial.gf` and can be translated into either pictures using
-the concrete syntax in [SpatialHTML.gf](SpatialHTML.gf) or natural language description in English in [SpatialEng.gf](SpatialEng.gf).
+the concrete syntax in [SpatialHTML.gf](SpatialHTML.gf) or natural language description, e.g. in English in [SpatialEng.gf](SpatialEng.gf).
 
 As an additional experiment, we can also use Agda to translate the data types we defined here into English. It is described in the file [SpatialEng.lagda.md](SpatialEng.lagda.md).
