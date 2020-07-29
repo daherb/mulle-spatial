@@ -153,3 +153,11 @@ linScene (constraintPlace o1 o2 x1 y1 x2 y2 r x x₁) =
     (lindet ds) = linDet
   in ds o1g nom +++ o1s +++ "ist" +++ rs +++ ds o2g acc +++ o2s
 ```
+
+And here is the translation of our example. You can use C-c C-n germanExample
+in Emacs to see the result.
+
+```
+-- "die Kiste ist in dem Haus"
+germanExample : String
+germanExample = linScene example

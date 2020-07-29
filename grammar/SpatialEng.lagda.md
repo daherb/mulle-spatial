@@ -53,6 +53,14 @@ resulting strings to build our description.
 linScene : Scene → String
 linScene (constraintPlace o1 o2 x1 y1 x2 y2 r x x₁) = "the " ++ (linObject o1) ++ " is " ++ (linRelation r) ++ " the " ++ (linObject o2)
 ```
+And here is the translation of our example. You can use C-c C-n germanExample
+in Emacs to see the result.
+
+```
+-- "the box is in the house"
+englishExample : String
+englishExample = linScene example
+```
 
 All this was pretty straight forward for English. If you want to see something a little more fun
 we can try the same for German in [SpatialGer.lagda.md](SpatialGer.lagda.md).
