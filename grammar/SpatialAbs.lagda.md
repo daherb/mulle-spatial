@@ -61,8 +61,9 @@ add a value to the vector. Both are type constructors for vectors.
 The constructor for the empty vector sets the length in the type (!) to 0.
 The constructor `::` takes several arguments: An implicit number `n` (in curly brackets),
 a value of type `A` and a vector of length `n` containing elements of type `A`. As
-a result it again produces a vector containing `A`s but with the type containing
-the length plus 1.
+a result it again produces a vector containing values of type `A` but with the type containing
+the length plus 1. Implicit arguments are arguments that don't have to be given by the user
+but instead can he infered.
 
 Now we can define a safe version of `head` only working on vectors of length greater than
 0 (expressed as `suc n`, which is always at least 1 greater than zero):
@@ -73,7 +74,31 @@ head (x ∷ v) = x
 ```
 
 The function type of this function guarantees that we cannot try to get the `head` of an empty 
-list, because an empty list does not match the argument type of the function.
+list, because an empty list does not match the argument type of the function. We again
+have implicit arguments for a number and a type (the type of elements in the vector).
+
+Let's see how we can use this type and function. We define two vectors, one empty and one with
+three elements called `testVector`. The non-empty vector can be used with our `head` function,
+the other can not. The reason is connected to the implicit arguments, specifically the first
+argument. It is a natural number that, when 1 added to it is the length of the vector. For
+our test vector we know it has to be 2 and the type of the elements is `Nat`, so we can give
+them explicitly. But it also works when skipping these parameters (in the case of `h'`). Agda
+can magically infer the value from the definition of the types (the magic of type inference!).
+But for the empty vector Agda fails. There is no such natural number, that when 1 is added it
+is 0. For that reason we cannot use `h''`.
+
+```
+emptyVector : Vector Nat 0
+emptyVector = []
+testVector : Vector Nat 3
+testVector = 1 ∷ (2 ∷ (3 ∷ []))
+
+h : Nat
+h = head {2} {Nat} testVector
+h' : Nat
+h' = head testVector
+h'' = head {!!} {Nat} emptyVector
+```
 
 But dependent types can also be very useful when modelling concepts
 closely related to natural language, especially concepts of semantics.
