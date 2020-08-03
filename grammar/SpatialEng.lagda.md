@@ -63,7 +63,7 @@ And here is the translation of our example. You can use C-c C-n englishExample
 in Emacs to see the result.
 
 ```
--- "the box is in the house"
+-- "the person is in the house"
 englishExample : String
 englishExample = linScene example
 ```
