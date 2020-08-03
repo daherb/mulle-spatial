@@ -1,4 +1,4 @@
-# The English module for the Spatial dependent types
+# The German module for the Spatial dependent types
 
 In a simular way to [SpatialEng.lagda.md](SpatialEng.lagda.md), we can define
 a translation from "abstract" data types to natural language description.
@@ -6,6 +6,11 @@ But for German it is actually a bit more interesting.
 
 For English we just had to map objects and relations onto strings and glue
 them together. For German we actually have to implement inflection for determiners.
+In GF we would be talking about linearization types. They are data types that
+represent intermediate steps of the translation between the abstract types and
+the final string. A powerful way to implement these intermediate types is by
+using records and total functions (in GF called tables). That is great because
+we have the same tools here in Agda. 
 
 Before we dive into that, we start by defining our new module and load the
 common "abstract" syntax and the built-in strings.
@@ -158,6 +163,11 @@ And here is the translation of our example. You can use C-c C-n germanExample
 in Emacs to see the result.
 
 ```
--- "die Kiste ist in dem Haus"
+-- "die Person ist in dem Haus"
 germanExample : String
 germanExample = linScene example
+
+```
+
+After having dealt with two different natural languages, we can move on to actually
+creating pictures in [SpatialHTML.lagda.md](SpatialHTML.lagda.md)
