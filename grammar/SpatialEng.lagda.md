@@ -4,6 +4,12 @@ Based on [SpatialAbs.ladga.md](SpatialAbs.ladga.md) we can define
 a translation from the abstract types into English descriptions
 of the scenes. This translation is roughly equivalent to using
 GF to linearize an abstract syntax tree using a concrete grammar.
+A linearization, sometimes also called a pretty-printer or un-parser
+is a translation from an abstract representation, usually an abstract
+syntax tree, back into a string representation. Here we try to define
+a translation from the types we defined in our abstract module into
+strings. For English this is directly possible. For other languages, 
+intermediate steps are possible.
 
 We again start by defining a new module. In addition we load the
 "abstract" module and the built-in strings.
@@ -53,7 +59,7 @@ resulting strings to build our description.
 linScene : Scene → String
 linScene (constraintPlace o1 o2 x1 y1 x2 y2 r x x₁) = "the " ++ (linObject o1) ++ " is " ++ (linRelation r) ++ " the " ++ (linObject o2)
 ```
-And here is the translation of our example. You can use C-c C-n germanExample
+And here is the translation of our example. You can use C-c C-n englishExample
 in Emacs to see the result.
 
 ```
