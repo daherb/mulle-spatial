@@ -1,9 +1,17 @@
 # Dependent types and spatial relations in pictures
 
-This is a literate Agda file. That means you can either read it online or directly load and
-evaluate it in Emacs using the agda-mode.
+Before we start, this is a literate Agda file. That means you can either read it online or directly load and
+evaluate it in Emacs using the agda-mode (assuming that you have Agda readily set up).
 
-We start our small demo project by defining an "abstract" module. It defines the data types
+This project uses dependent types to express spatial constraints on objects in a picture (which we
+call a "scene"). The objects of a scene type can be translated in either the pictures as graphics or
+picture descriptions as natural language. We attempt to require little previous knowledge about
+dependent types and other topics. But some understanding of (functional) programming can be very
+herlpful. The original implementation has been done in [Grammatical Framework](https://www.grammaticalframework.org/) (GF)
+and later been translated into Agda. Even though plenty of inspiration has come from using GF,
+we try our best to make this document understandable without any knowledge of GF.
+
+We start this project by defining an "abstract" module. It defines the data types
 which we need to describe our pictures. Later we can add modules to translate
 these data types into other representations. We call this module "SpatialAbs"
 
@@ -16,12 +24,14 @@ module SpatialAbs where
 Dependent types are great to model constraints. To put it very shortly,
 a dependent type is a type that depends on values of another type.
 A simple example is the definition of vectors, i.e. lists with associated
-length. The type of a vector depends on its length. This solves issues
-one can have with lists such as trying to get the head of an empty list
+length. The type of a vector depends on its length. A big issue with lists
+in computer science is, that the e.g. the basic operation of getting the
+first element (head) of a list does not work on empty lists. It is possible
+to catch this as an error, but it would be nicer to not allow this in the
+first place. Dependent types can solve this issue
 because the `head` function is only defined for vectors of length larger
 than 0 and this constraint can be expressed on the type level.
-
-In Agda a vector can be defined this way:
+We will now have a look on how vectors can be implemented in Agda:
 
 ```
 open import Agda.Builtin.Nat
@@ -30,8 +40,12 @@ data Vector (A : Set) : Nat → Set where
   []  : Vector A zero
   _∷_ : {n : Nat} → A → Vector A n → Vector A (suc n)
 ```
+
 We use the built-in definition of natural numbers, which is essentially the same as the numbers
-we will use later, based on the Peano axioms.
+we will use later, based on the Peano axioms. We will see the definition
+of these numbers later. For the moment `zero` is a natural number representing 0 (what a surprise)
+and we can form any natural number `n` by sequence of adding 1 `n` times to 0, i.e. 1+1+...+0.
+Addind 1 is called the successor (`suc`).
 
 Because we want
 to have vectors working for any type, we use a type variable `(A : Set)`
@@ -39,8 +53,11 @@ in the definition (`Set` is the type of types in Agda). And the part `Nat → Se
 defines a vector as a dependent type, depending on a number of type `Nat`, the
 length of the vector.
 
-The vector is similar to a list with `[]` being the empty vector and using `::` to
-concatenate a value to the vector. Both are type constructors for vectors.
+To form an object of a type we use a constructor for this type. A constructor is a
+function that can take arguments and produces an object of the type. For vectors
+we have twoc constructors. Vector are similar to a list with `[]` being the empty vector 
+and using `::` (spoken as `cons`) to
+add a value to the vector. Both are type constructors for vectors.
 The constructor for the empty vector sets the length in the type (!) to 0.
 The constructor `::` takes several arguments: An implicit number `n` (in curly brackets),
 a value of type `A` and a vector of length `n` containing elements of type `A`. As
@@ -54,12 +71,14 @@ Now we can define a safe version of `head` only working on vectors of length gre
 head : {n : Nat} → {A : Set } → Vector A (suc n) → A
 head (x ∷ v) = x
 ```
-And already the types guarantee that we cannot try to get the `head` of an empty list.
+
+The function type of this function guarantees that we cannot try to get the `head` of an empty 
+list, because an empty list does not match the argument type of the function.
 
 But dependent types can also be very useful when modelling concepts
 closely related to natural language, especially concepts of semantics.
 This document explains how dependent
-types, both in Grammatical Framework (GF) and Agda can be used to express spatial relationship
+types can be used to express spatial relationship
 between objects in a picture and how the same type-theoretic representation
 can be translated into both graphical pictures and natural language
 descriptions.
@@ -70,6 +89,7 @@ Before we can dive into more complex topics, we have to define a concept
 of numbers. An easy way to define natural numbers is using the Peano axioms.
 We could use the built-in numbers as we did with the vectors before, but it
 cannot hurt to repeat the definition here:
+
 ```
 data Num : Set where
   z : Num
@@ -240,9 +260,17 @@ define a new dependent type describing what relation is valid between which two 
 The first four just rely on the classes we defined. For example, if both objects are in
 the class `BesideObject` they can be combined in the `Beside` relation.
 
-But then some of the relations are related. If something is next to something else, it is
-also beside it. And if something is on top of something else, it is also above. So, if we
-can find a way to proof, that something is on top of something else, it is also above it.
+But then some of the relations are related. To express this, we have a function that tells 
+us, that if something has type A, it is also of type B. Such a function is often called a
+a type coercion. The problem we try to solve is, that we only defined that objects can be
+besides each other, but our relations are more fine-grained. Objects can be either to the
+left or to the right or directly next to or further away, but all of them qualify as
+"besides". Of course we could say, that every `BesidesObject` is also a `NextToObject` and
+then define a `validnextto` constructor for `ValidRel`. This would mean that we have a type
+coercion defined on the different kind of objects. A shorter solution is given below, where
+we define, that every pair of objects, that can be besides each other, can also be next to
+each other and it does not matter if it is to the left or to the right, to be a valid relation.
+This solution probably does not really qualify as a coercion but solves a similar problem.
 
 Finally, we handle a few special cases, where we don't want to use the general classes but
 only handle a few objects separately. It is not nice to put a person into a box, so we did
@@ -319,15 +347,15 @@ data Scene : Set where
 
 ```
 
-Finally, we can give an example. It is a box in a house and both objects are at the coordinate (0,0). Translated into
-a natural language description we would get the sentence "the box is in the house".
+Finally, we can give an example. It is a person in a house and both objects are at the coordinate (3,0). Translated into
+a natural language description we would get the sentence "the person is in the house".
 
 ```
 example : Scene
-example = constraintPlace obox ohouse z z z z rin boxinhouse (validinpos z z z z (sequal z z (equal z)) (sequal z z (equal z)) (equal z) (inrange z z z z (lessz (s (s (s (s z))))) (lessz (s (s (s (s z))))) (lessz (s (s (s z)))) (lessz (s (s (s z))))))
+example = constraintPlace operson ohouse n3 z n3 z rin personinhouse (validinpos (s (s (s z))) z (s (s (s z))) z  (equal (s (s (s z))))  (equal z) (equal z)  (inrange (s (s (s z))) z (s (s (s z))) z (lesss (s (s z)) (s (s (s (s z)))) (lesss (s z) (s (s (s z))) (lesss z (s (s z)) (lessz (s z))))) (lesss (s (s z)) (s (s (s (s z)))) (lesss (s z) (s (s (s z))) (lesss z (s (s z)) (lessz (s z))))) (lessz (s (s (s z)))) (lessz (s (s (s z))))))
 ```
 
-The same dependent types are defined in GF as an abstract syntac in the file `Spatial.gf` and can be translated into either pictures using
-the concrete syntax in [SpatialHTML.gf](SpatialHTML.gf) or natural language description, e.g. in English in [SpatialEng.gf](SpatialEng.gf).
+As an additional experiment, we can also use Agda to translate the data types we defined here into natural languages. A simple example is the translation to English in [SpatialEng.lagda.md](SpatialEng.lagda.md) and a more challenging example is the translation to German in [SpatialGer.lagda.md](SpatialGer.lagda.md). To translate into pictures we implemented an Agda module that generates HTML output that shows the pictures.
 
-As an additional experiment, we can also use Agda to translate the data types we defined here into English. It is described in the file [SpatialEng.lagda.md](SpatialEng.lagda.md).
+The same dependent types are defined in GF as an abstract syntac in the file [Spatial.gf](Spatial.gf) and can be translated into either pictures using
+the concrete syntax in [SpatialHTML.gf](SpatialHTML.gf) or natural language description, e.g. in English in [SpatialEng.gf](SpatialEng.gf).
