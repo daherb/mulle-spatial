@@ -372,8 +372,10 @@ data Scene : Set where
 
 ```
 
-Finally, we can give an example. It is a person in a house and both objects are at the coordinate (3,0). Translated into
-a natural language description we would get the sentence "the person is in the house".
+Finally, we can give an example. It is a person in a house and both objects are at the coordinate (3,0). The relation is "in" and we know
+that we can put a person into a house because of our constructor `personinhouse`. The messy part is the proof objects
+that guarantee that the objects can be placed in the way to each other that they are actually
+inside each other and that they are really placed on the grid. Translated into a natural language description we would simply get the sentence "the person is in the house". 
 
 ```
 example : Scene
