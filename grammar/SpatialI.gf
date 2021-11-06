@@ -4,6 +4,8 @@ incomplete concrete SpatialI of Spatial = {
       BesideObject, OnTopOfObject, AboveObject, BelowObject  = Str ;
     ValidPos, ValidRel, Num, InRange, IsEqual, IsLess  = Str ;
   lin
+    maxx = "";
+    maxy = "";
     -- Basic numbers
     z = "0" ;
     n1 = "1" ;
