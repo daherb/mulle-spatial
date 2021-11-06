@@ -112,7 +112,7 @@ Finally, all these numbers are put into place in a HTML sceleton of the picture:
 ```
   "<html>\n" ++
   "<body>\n" ++
-  "<svg height=\"" ++ height ++ "\" width=\"" ++ width ++ "\">" ++
+  "<svg style="border:black; border-style: solid; background: white" height=\"" ++ height ++ "\" width=\"" ++ width ++ "\">" ++
   "<image style=\"x : calc(" ++ linNat x1 ++ "*100px + " ++ xoffset ++ "px); y: calc((2 - " ++ linNat y1 ++ ")*100px + " ++ yoffset ++ "px); height : calc(" ++ scale ++ "* 100px) ; width : calc(" ++ scale ++ "* 100px) ;\" xlink:href="++ linObject o1 ++ " />\n" ++
   "<image style=\"x : calc(" ++ linNat x2 ++ " * 100px); y: calc((2 - " ++ linNat y2 ++ ") * 100px);\" xlink:href="++ linObject o2 ++ " height=\"100\" width=\"100\"/>\n" ++
   "</svg>\n" ++
@@ -131,7 +131,7 @@ The result is this piece of HTML code:
 ```HTML
 <html>
 <body>
-<svg height="400" width="500"><image style="x : calc(3*100px + 20px); y: calc((2 - 0)*100px + 30px); height : calc(0.6* 100px) ; width : calc(0.6* 100px) ;" xlink:href="../graphics/person.svg" />
+<svg style="border:black; border-style: solid; background: white" height="400" width="500"><image style="x : calc(3*100px + 20px); y: calc((2 - 0)*100px + 30px); height : calc(0.6* 100px) ; width : calc(0.6* 100px) ;" xlink:href="../graphics/person.svg" />
 <image style="x : calc(3 * 100px); y: calc((2 - 0) * 100px);" xlink:href="../graphics/house.svg" height="100" width="100"/>
 </svg>
 </body>
