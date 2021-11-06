@@ -78,16 +78,16 @@ anonymous functions and pattern matching, we can get nice inflection tables:
 ```
 linDet : LinDet
 linDet = record { detS =
-  λ where
+  \ where
     fem → λ where
       nom → "die"
-      acc → "der"
+      dat → "der"
     masc → λ where
       nom → "der"
-      acc → "den"
+      dat → "dem"
     neutr → λ where
       nom → "das"
-      acc → "dem" }
+      dat → "dem" }
 ```
 
 To be honest, we could have defined the linearization of relations
