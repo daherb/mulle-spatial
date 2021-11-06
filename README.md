@@ -4,8 +4,11 @@ This is a simple demo creating both pictures and descriptions in parallel using 
 
 The pictures are created by combining various objects on a grid.
 
+An in-depth explanation is included in the [Agda Code](https://github.com/daherb/mulle-spatial/blob/master/grammar/SpatialAbs.lagda.md)
 ## Requirements
-[Grammatical Framework](https://github.com/GrammaticalFramework/gf-core/) (Tested with Version 3.10 on Linux)
+[Grammatical Framework](https://github.com/GrammaticalFramework/gf-core/) (Tested with Version 3.10 on Linux) or 
+[Agda](https://wiki.portal.chalmers.se/agda/pmwiki.php)
+
 ## Building
 
 To compile the grammar just run `bash grammar/build.sh` or run something like `gf -make Spatial*.gf`
