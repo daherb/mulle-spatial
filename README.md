@@ -30,3 +30,5 @@ To convert a tree with constraints into a simple tree that can be edited e.g. us
 ```
 gr -depth=8 | l -lang=Eng | p -cat=EditScene -lang=Eng
 ```
+
+Copyright (c) 2019 Herbert Lange
